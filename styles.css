@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --very-dark-grayish: hsl(217, 19%, 35%);
+    --desaturated: hsl(214, 17%, 51%);
+    --grayish: hsl(212, 23%, 69%);
+    --light-grayish: hsl(210, 46%, 95%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--light-grayish);
+}
+
+.product-picture {
+    height: 250px;
+    width: 250px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    width: 430px;
+    padding: 1.5rem 3rem 1.5rem 2rem;
+    font-family: "Manrope";
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: white;
+}
+
+.product-picture,
+.content {
+    box-shadow: 6px 12px 12px hsla(214, 17%, 51%, .1);
+}
+
+.title {
+    color: var(--very-dark-grayish);
+}
+
+.description {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--desaturated);
+}
+
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.author-picture {
+    width: 35px;
+    height: 35px;
+    border-radius: 99px;
+}
+
+.author-info {
+    margin: 0 16px;
+}
+
+.author-info .name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--very-dark-grayish);
+    margin-bottom: 2px;
+}
+
+.author-info .date {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grayish);
+}
+
+.share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 99px;
+    background-color: var(--light-grayish);
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.share-info {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .25s ease-in;
+    width: 200px; height: 45px;
+    bottom: 160%; left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .15) ;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 28px;
+    border-radius: 6px;
+    background-color: var(--very-dark-grayish);
+    color: var(--grayish);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    border-top: 10px solid var(--very-dark-grayish);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.wrapper img {
+    width: 14px;
+    height: 14px;
+}
+
+@media only screen and (max-width: 680px) {
+    body {
+        flex-direction: column;
+    }
+
+    .product-picture {
+        width: 300px;
+        height: 25vh;
+        border-top-right-radius: 12px;
+        border-bottom-left-radius: 0;
+    }
+
+    .content {
+        display: block;
+        width: 300px;
+        height: fit-content;
+        padding: 1.5rem 2rem 1.5rem 2rem;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 12px;
+    }
+
+    .title {
+        font-size: .9rem;
+    }
+
+    .description {
+        margin: 12px 0 18px 0;
+    }
+}
