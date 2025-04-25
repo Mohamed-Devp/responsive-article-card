@@ -1,34 +1,40 @@
-const tooltip = document.querySelector('.share-info');
-const shareButton = document.querySelector('.share');
+const shareButton = document.querySelector('.share-icon');
+const shareInfo = document.querySelector('.share-info');
+const shareLinks = document.querySelectorAll('.share-info img');
 
-let isVisible = false;
+let isActive = false;
 
-function showTooltip() {
-    if (tooltip instanceof HTMLElement) {
-        tooltip.style.visibility = 'visible';
-        tooltip.style.opacity = '1';
+function toggleShowInfo() {
+    if (!(shareInfo instanceof HTMLElement)) {
+        return;
     }
-}
 
-function hideTooltip() {
-    if (tooltip instanceof HTMLElement) {
-        tooltip.style.visibility = 'hidden';
-        tooltip.style.opacity = '0';
+    
+    shareButton.classList.toggle('active');
+    if (isActive) {
+        shareInfo.style.visibility = 'hidden';
+        shareInfo.style.opacity = '0';
+
+        isActive = false;
+    } else {
+        shareInfo.style.visibility = 'visible';
+        shareInfo.style.opacity = '1';
+
+        isActive = true;
     }
 }
 
 function onMount() {
-    if (shareButton instanceof HTMLElement) {
-        shareButton.addEventListener('click', () => {
-            if (isVisible) {
-                hideTooltip();
-                isVisible = false
-            } else {
-                showTooltip();
-                isVisible = true;
-            }
-        });
+    if (!(shareButton instanceof HTMLElement)) {
+        return;
     }
+
+    shareButton.addEventListener('click', toggleShowInfo);
+    shareLinks.forEach(shareLink => {
+        if (shareLink instanceof HTMLElement) {
+            shareLink.addEventListener('click', toggleShowInfo);
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', onMount);
